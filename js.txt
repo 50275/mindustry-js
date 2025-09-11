@@ -1,0 +1,61 @@
+// JS Collection 2025-09-10
+
+// Vars.state.rules 
+// If you are hosting, remember to use Call.setRules(Vars.state.rules) to update clients
+Vars.state.rules.allowEditRules=true; 
+
+	// Building (and the ability to place anything) 
+	// (boolean values)
+	let r = Vars.state.rules; r.allowEditWorldProcessors=true; r.disableWorldProcessors=false; 
+	let r = Vars.state.rules; r.editor = !r.editor;		// Toggle editor mode
+	let r = Vars.state.rules; r.allowEnvironmentDeconstruct = !r.allowEnvironmentDeconstruct; 
+	let r = Vars.state.rules; r.disableUnitCap = !r.disableUnitCap; 
+	let r = Vars.state.rules; r.infiniteResources=!r.infiniteResources; 			
+	let r = Vars.state.rules; r.instantBuild=!r.instantBuild; 
+	let r = Vars.state.rules; r.schematicsAllowed=!r.schematicsAllowed;
+	let r = Vars.state.rules; r.waves = !r.waves; 
+	let r = Vars.state.rules; r.fog = !r.fog; 
+	let r = Vars.state.rules; r.staticFog = !r.staticFog; 
+	Vars.state.rules.fog = Vars.state.rules.staticFog = false; 
+	
+	// (integer values) 
+	Vars.state.rules.env = 0; // Remove erekir... atmosphere effect? Thanks Sire! 
+	
+	// (object values) 
+	Vars.state.rules.revealedBlocks.addAll(Blocks.advancedLaunchPad, Blocks.landingPad); 	
+	Vars.state.rules.planet = Planets.sun; 				// sun: Mixtech, serpulo: serpulo, erekir: erekir
+	Vars.state.rules.revealedBlocks.addAll(Vars.content.blocks())       
+	Vars.state.rules.revealedBlocks.clear()					
+
+// Campaign
+PlanetDialog.debugSelect = true // Thanks Skyon! 
+Vars.state.rules.winWave=1; // Also Vars.state.wave (int)
+Vars.state.sector.save=null; // Delete the sector you're currently playing in
+Vars.state.sector.preset=null; // I don't know, maybe this updates it to a numbered sector if it exists? 
+Planets.tantros.visible=Planets.tantros.accessible=Planets.tantros.alwaysUnlocked=true	
+
+// Survival
+Vars.state.wave = 99 // Change wave number
+Vars.state.waveTime *= 10      // Increase wave timer
+Vars.waves = Waves.generate(1) // Make waves easy
+
+// Destruction
+Groups.build.each(u => {u.kill()}) // Kill all buildings
+Groups.unit.each(u => {u.kill()}) // Kill all units
+Groups.build.each(u => {if(u.team != Vars.player.team()){u.kill()}}) 	// Kill all buildings of other teams
+Groups.unit.each(u => {if(u.team != Vars.player.team()){u.kill()}}) 	// Kill all units of other teams
+
+// Cheats
+let u = Vars.player.team().cores().first().items.add(Vars.content.item("copper"), 1e6); // Fill sharded core with one resource
+let u = Vars.player.team().cores().first(); Vars.content.items().each(i => {u.items.add(i, 1e6)});    // Fill sharded core with all resources (even hidden ones) 
+Vars.state.rules.teams.get(Vars.player.team()).fillItems = true; // Fill sharded core with all resources forever
+
+// Team Rules 
+// demo only
+Vars.state.rules.teams.get(Vars.player.team()).unitHealthMultiplier=1e6// Greater unit health
+for(let i=0; i<Team.all.length; i++){let t = Vars.state.rules.teams.get(Team.get(i)); t.cheat ^= true} // (team rules demo) toggle building requirements
+
+// Custom Commands
+// I write these to answer questions. You can ask me to write some for you too
+// You may wish to make a backup before running this command
+Planets.serpulo.sectors.each(u => {u.info.wave = u.info.winWave}) // "complete" all the waves in serpulo survival sectors, unpredictable effects in attack
