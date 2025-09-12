@@ -46,6 +46,7 @@ Groups.build.each(u => {if(u.team != Vars.player.team()){u.kill()}}) 	// Kill al
 Groups.unit.each(u => {if(u.team != Vars.player.team()){u.kill()}}) 	// Kill all units of other teams
 
 // Cheats
+Vars.player.team(Team.sharded); // Switch your team to sharded. Thanks xnuui! 
 let u = Vars.player.team().cores().first().items.add(Vars.content.item("copper"), 1e6); // Fill sharded core with one resource
 let u = Vars.player.team().cores().first(); Vars.content.items().each(i => {u.items.add(i, 1e6)});    // Fill sharded core with all resources (even hidden ones) 
 Vars.state.rules.teams.get(Vars.player.team()).fillItems = true; // Fill sharded core with all resources forever
