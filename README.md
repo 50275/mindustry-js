@@ -2,9 +2,7 @@
 JavaScript commands for use in the Mindustry Console
 
 # How to Use
-Copy-paste JavaScript commands into the console. 
-
-# Open Console (Mindustry) 
-- Desktop (& Mac): Mindustry -> Settings -> Game -> Enable Console
-- Android: Download this [console mod](https://github.com/SMOLKEYS/new-console-hardline).
-- iOS: You can't use console commands on a mobile iOS device. 
+Use commands in the Mindustry console. The method for opening this console varies across devices.  
+- Desktop/Mac : Mindustry -> Settings -> Game -> Enable Console
+- Android: Download this [console mod](https://github.com/SMOLKEYS/new-console-hardline). (do this on the mod browser)
+- iOS: It isn't possible for you to open the console. 
