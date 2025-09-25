@@ -32,7 +32,9 @@ PlanetDialog.debugSelect = true // Thanks Skyon!
 Vars.state.rules.winWave=1; // Also Vars.state.wave (int)
 Vars.state.sector.save=null; // Delete the sector you're currently playing in
 Vars.state.sector.preset=null; // I don't know, maybe this updates it to a numbered sector if it exists? 
-Planets.tantros.visible=Planets.tantros.accessible=Planets.tantros.alwaysUnlocked=true	
+Planets.tantros.visible=Planets.tantros.accessible=Planets.tantros.alwaysUnlocked=true;	
+s=new Seq(Objectives.Objective); TechTree.all.each(u=>u.objectives=s) // Remove all objective requirements for techs
+TechTree.all.each(u=>u.requirements=u.finishedRequirements) // Unlock all techs... but you still gotta click em all
 
 // Survival
 Vars.state.wave = 99 // Change wave number
