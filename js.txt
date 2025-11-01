@@ -60,5 +60,5 @@ for(let i=0; i<Team.all.length; i++){let t = Vars.state.rules.teams.get(Team.get
 
 // Custom Commands
 // I write these to answer questions. You can ask me to write some for you too
-// You may wish to make a backup before running this command
+// TODO this is probably broken don't use
 Planets.serpulo.sectors.each(u => {u.info.wave = u.info.winWave}) // "complete" all the waves in serpulo survival sectors, unpredictable effects in attack
