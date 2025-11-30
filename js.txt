@@ -1,4 +1,7 @@
-// JS Collection 2025-09-10			
+// JS Collection			
+
+// Delete units screwed over by time control (change unit type) 
+Groups.unit.each(u => {if(u.type == UnitTypes.dagger) {u.remove()}})
 
 // Rules
 // The rest of the rules are at the bottom, but you don't need them anymore
