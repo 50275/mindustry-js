@@ -65,6 +65,7 @@ Vars.state.rules.allowEditRules=true;
 	Vars.state.rules.env = 0; // Remove erekir... atmosphere effect? Thanks Sire! 
 	
 	// (object values) 
+	Vars.state.rules.bannedBlocks.clear()
 	Vars.state.rules.revealedBlocks.addAll(Blocks.advancedLaunchPad, Blocks.landingPad); 	
 	Vars.state.rules.planet = Planets.sun; 				// sun: Mixtech, serpulo: serpulo, erekir: erekir
 	Vars.state.rules.revealedBlocks.addAll(Vars.content.blocks())       
